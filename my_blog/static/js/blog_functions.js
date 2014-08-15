@@ -185,6 +185,9 @@ var toggleArticles = function() {
     $(".collapse_article").slideToggle();
 }
 
+var toggleBlogDescription = function() {
+    $(".collapse_description").slideToggle();
+}
 
 $(document).ready(function() {
    var last_id='';
@@ -199,6 +202,7 @@ $(document).ready(function() {
     });
     $(".collapse_article").hide();
     $(".collapse_month").hide();
+    $(".collapse_description").hide();
 });
 
 

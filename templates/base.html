@@ -18,30 +18,34 @@
 				</div>
 			
 				<div class="header-right">
-					<div ><a href="/."><h2>Official Blog</h2></a></div>
+					<div ><a href="/."><h2>{%  block Blog_title %}Official Blog{% endblock %}</h2></a></div>
 					{%  block owner %}
 						<div>Bytedos Blog</div>
 					{% endblock %}
+					<a href="javascript:toggleBlogDescription()">About</a>
 				</div>	
 				
 			</div>
 			{% block header_outer%}
 			{% endblock%}
-</div>
-	<div class="inner">
-	
-		<div class="left_content">
-		{% block left_content %}
-  
-		{% endblock%}
 		</div>
-		
-			<div class="right_content">
-			{% block right_content %}
-  
-		{% endblock%}
-		</div>
-		
-	</div>	
- </body>   
+		<div class="inner">
+			<div class ="collapse_description">
+				{% block blog_description %}
+				{% endblock%}
+			</div>
+			<div class="left_content">
+			{% block left_content %}
+	  
+			{% endblock%}
+			</div>
+			
+				<div class="right_content">
+				{% block right_content %}
+	  
+			{% endblock%}
+			</div>
+			
+		</div>	
+	 </body>   
 </html>

@@ -3,10 +3,12 @@
 
 {% block title %}
 
-    {{blog}}
+    {{blog.title}}
 
 {% endblock %}
-
+{%  block Blog_title %}
+{{blog.title}}
+{% endblock %}    
 
 {%  block owner %}
   <h4> Written by {{blog.owner}}</h4>
@@ -70,10 +72,11 @@
         </form>
        
     {% endif %}
-
-    
 {% endblock %}
 
+{% block blog_description %}
+<p>{{blog.description}}</p>
+{% endblock%}
     
 {% block left_content %}
 
