@@ -1,0 +1,130 @@
+{% extends 'base.html'%}
+
+
+{% block title %}
+
+    {{blog}}
+
+{% endblock %}
+
+
+{%  block owner %}
+  <h4> Written by {{blog.owner}}</h4>
+{% endblock %}
+
+
+{% block extra_head %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/static/js/blog_functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css"> 
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        
+    <!-- include summernote css/js-->
+    <link rel="stylesheet" type="text/css" href="static/js/summernote-master/dist/summernote.css" />
+    <script src="static/js/summernote-master/dist/summernote.min.js"></script>
+{% endblock%}
+
+
+{% block header_form %}
+    
+    {% if user.is_authenticated %}
+        <div>
+            <h2>{{user.username}}</h2>
+            <a href="/logout">Log out</a><br/>
+            <a href="#" id="new_article">New Article</a>
+        </div>
+    {% else %}
+        <form  method="POST" action="/">
+            {% csrf_token %}
+            <div>
+                <label class="">{{ login_form.username.label }}</label>
+            </div>
+            <div class="">
+               {{ login_form.username}}
+            </div>
+            <div>
+                <label class="">{{ login_form.password.label }}</label>
+            </div>
+            <div class="">
+               {{ login_form.password}}
+            </div>
+            {% if login_form.username.errors %}
+                <div>
+                    <p>username is missing</p>
+                </div>
+            {% else %}
+                {% if login_form.password.errors %}
+                    <div>
+                        <p>password is missing</p>
+                    </div>
+                {% else %}
+                    {% if login_form.errors %}
+                        <div>
+                            <p>wrong username or password</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            <button>Login</button>
+        </form>
+       
+    {% endif %}
+
+    
+{% endblock %}
+
+    
+{% block left_content %}
+
+    <ul class="scrollable">  
+        {% for article in blog.get_articles_before %}
+            <li art-id="{{article.id}}">
+                <div class="article">
+                    <div class="article_head">
+                        {% if user.is_authenticated %}
+                       <div title="Delete" class="remove">
+                            <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-128.png">
+                       </div>
+                       <div  title ="Edit" class="edit">
+                            <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/new-24-128.png">
+                       </div>
+                        {% endif %}
+                        <h2>{{article.title}}</h2>
+                        <div class="published"><span class="caption">Posted:</span>
+                            <span class="publishdate" itemprop="datePublished">{{article.created}}</span>
+                        </div>
+                    </div>
+                     <div class="article_content">{{article.content|safe}}</div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block right_content %}
+    <div  class="filters">
+        <h3>Filters</h3>
+        <ul>
+        {% for year, m_values in filters.items %}
+            <li>
+                <a href="javascript:toggleMonths()">{{year}}</a>
+                <ul class="collapse_month">
+                    {% for month, id_values in m_values.items %}
+                        <li>
+                            <a href="javascript:toggleArticles()">{{month}}</a>
+                        <ul class="collapse_article">
+                            {% for item in id_values %}
+                                <li>
+                                    <a art-id="{{item.id}}" class="filtered_article">{{item.title}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock%}

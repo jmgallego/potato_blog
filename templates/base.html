@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  <title>{% block title%}Blog {% endblock %}</title>
+		<!-- STYLES -->
+		<link rel="stylesheet" type="text/css" href="/static/css/styles.css"/>
+		<!-- JQUERY -->
+		{% block extra_head %}
+  {% endblock%}
+	</head>
+	<body>
+		<div class="header-outer">
+			
+			<div class="header inner">
+					<div class="header-left">
+					{% block header_form %}
+					{% endblock %}
+				</div>
+			
+				<div class="header-right">
+					<div ><a href="/."><h2>Official Blog</h2></a></div>
+					{%  block owner %}
+						<div>Bytedos Blog</div>
+					{% endblock %}
+				</div>	
+				
+			</div>
+			{% block header_outer%}
+			{% endblock%}
+</div>
+	<div class="inner">
+	
+		<div class="left_content">
+		{% block left_content %}
+  
+		{% endblock%}
+		</div>
+		
+			<div class="right_content">
+			{% block right_content %}
+  
+		{% endblock%}
+		</div>
+		
+	</div>	
+ </body>   
+</html>

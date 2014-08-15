@@ -1,0 +1,37 @@
+
+
+<form id="article_form" method="POST" action="/do_article/">
+    {% csrf_token %}
+    {% if form.instance.id %}
+	    <input type='hidden' name='id' value="{{form.instance.id}}">
+    {% endif %}
+    <div class="">
+	<div class="cancel" title="Cancel">
+	    <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-128.png">
+       </div>
+	<div class="submit" title="Submit">
+	    <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/checkmark-24-128.png">
+	</div>
+        <div class="">
+            <label class="">{{ form.title.label }}</label>
+        </div>
+        <div class="">
+            {{ form.title}}
+        </div>
+        <div>
+            {{ form.title.errors }}
+        </div>
+				</div>
+    <div class="">
+        <div class="">
+            <label class="">{{ form.content.label }}</label>
+        </div>
+        <div class="">
+            {{ form.content}}
+        </div>
+        <div>
+            {{ form.content.errors }}
+        </div>
+				</div>
+</form>
+    

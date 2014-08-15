@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: 'open sans', arial, sans-serif;
+    }
+li {
+    list-style: none;
+    }
+button{
+    margin-top: 10px!important;
+}
+.inner {
+    max-width: 978px;
+    margin: auto;
+    padding-top: 25px;
+    }
+.header{
+    background-image: url("http://apuntes.jm-ga.com/static/bytedos_logo.png");
+    background-repeat: no-repeat;
+    background-position: right 0px;
+    background-size: contain;
+    height: 189px !important;
+    }
+.header-outer {
+    clear: both;
+    background: #f5f5f5;
+    }
+.header-left {
+    float:left;
+    margin-top: -15px;
+    }   
+.header-right {
+    padding-left: 30px;
+    border-left: solid #CCCCFF;
+    margin-top: -4px;
+    margin-left: 16px;
+    height: 80%;
+    float: left;
+    }    
+.left_content {
+    width: 66%;
+    float: left;
+    }
+.right_content {
+    width: 25%;
+    background: #f5f5f5;
+    margin-left: 9%;
+    margin-top: 75px;
+    float: left;
+    padding: 10px;
+    }
+.article, #article_form {
+    margin-top: 45px;
+    border-bottom: dotted 3px #ebebeb;
+    padding-top: 12px;
+    padding-bottom: 30px;
+    }
+.article_head h2 {
+    width:80%;
+    }
+.edit, .remove, .cancel, .submit {
+    float: right;
+    width:5%;
+    margin-right:10px
+    }
+.edit img, .remove img, .cancel img, .submit img {
+    width: 100%;
+    cursor:pointer
+    }
+.published{
+    font-size: 11px;
+    border-bottom: solid 1px #ebebeb;
+    border-top: solid 1px #ebebeb;
+    padding: 1.0em 0 1.0em 0;
+    margin-bottom: 25px;
+    }
+.filters ul {
+    padding-left: 20px;
+}
+.filters li {
+    list-style: circle;
+    margin-top: 10px;
+}
+.filters li a{
+    cursor:pointer;
+}
+.errorlist{
+    font-size:12px;
+    
+    
+}
